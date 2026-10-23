@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meme Sounds</title>
+<style>
+:root {
+  --bg: #0c0c0f;
+  --card: #17171d;
+  --orange: #ff6a00;
+  --amber: #ffb52e;
+  --text: #ffffff;
+  --muted: #a4a4ae;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+header {
+  padding: 18px 16px;
+  background: #121216;
+  border-bottom: 1px solid #292930;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.nav {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+}
+.logo span { color: var(--orange); }
+.menu-button {
+  background: transparent;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 10px;
+  font-size: 22px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.menu {
+  display: none;
+  max-width: 1000px;
+  margin: 14px auto 0;
+  padding-top: 10px;
+  border-top: 1px solid #292930;
+}
+.menu.open { display: grid; gap: 14px; }
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 25px 14px 45px;
+}
+.hero { text-align: center; padding: 22px 0 25px; }
+.hero h1 {
+  font-size: clamp(29px, 7vw, 46px);
+  margin: 0 0 12px;
+}
+.hero h1 span {
+  color: var(--orange);
+  text-shadow: 0 0 22px #ff6a0044;
+}
+.hero p {
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}
+.search {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #35353e;
+  border-radius: 13px;
+  background: #17171d;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  margin: 10px 0 24px;
+}
+.search:focus { border-color: var(--orange); }
+.section-title {
+  font-size: 21px;
+  margin: 0 0 16px;
+}
+.sound-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.sound-card {
+  background: linear-gradient(145deg, #1c1c23, #131318);
+  border: 1px solid #303039;
+  border-radius: 16px;
+  padding: 13px;
+  min-width: 0;
+  transition: transform .18s, border-color .18s;
+}
+.sound-card:active { transform: scale(.97); }
+.sound-card:hover {
+  border-color: #ff6a0088;
+}
+.sound-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 43px;
+}
+.play {
+  flex: 0 0 37px;
+  width: 37px;
+  height: 37px;
+  border: none;
+  border-radius: 50%;
+  color: #111;
+  background: linear-gradient(135deg, var(--orange), var(--amber));
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 13px #ff6a0030;
+}
+.sound-info { min-width: 0; }
+.sound-name {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.duration {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 5px;
+}
+.download {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  padding: 11px 4px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(100deg, var(--orange), var(--amber));
+  color: #17100a;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.empty {
+  display: none;
+  text-align: center;
+  color: var(--muted);
+  padding: 25px 0;
+}
+footer {
+  border-top: 1px solid #292930;
+  text-align: center;
+  padding: 24px 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+footer a { color: var(--amber); text-decoration: none; }
+@media (min-width: 650px) {
+  .sound-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main { padding-top: 35px; }
+  .sound-card { padding: 17px; }
+  .sound-name { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">MEME <span>SOUNDS</span></div>
+    <button class="menu-button" id="menuButton"
+      aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+  <nav class="menu" id="menu">
+    <a href="index.html">Home</a>
+    <a href="#sounds">Browse Sounds</a>
+    <a href="#about">About</a>
+    <a href="mailto:">Contact by Email</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Find Your <span>Meme Sound</span></h1>
+    <p>Explore funny sounds and discover your next favourite audio.</p>
+  </section>
+
+  <input class="search" id="search"
+    type="search" placeholder="Search meme sounds..."
+    aria-label="Search sounds">
+
+  <section id="sounds">
+    <h2 class="section-title">🔥 Popular Sounds</h2>
+    <div class="sound-grid" id="soundGrid">
+
+      <article class="sound-card" data-name="bruh sound">
+        <div class="sound-top">
+          <button class="play" aria-label="Play Bruh Sound"
+            data-audio="sounds/bruh.mp3">▶</button>
+          <div class="sound-info">
+            <div class="sound-name">Bruh Sound</div>
+            <span class="duration">Funny Sound</span>
+          </div>
+        </div>
+        <a class="download" href="sounds/bruh.mp3" download>⬇ Download</a>
+      </article>
+
+      <article class="sound-card" data-name="vine boom">
+        <div class="sound-top">
+          <button class="play" aria-label="Play Vine Boom"
+            data-audio="sounds/vine-boom.mp3">▶</button>
+          <div class="sound-info">
+            <div class="sound-name">Vine Boom</div>
+            <span class="duration">Impact Sound</span>
+          </div>
+        </div>
+        <a class="download" href="sounds/vine-boom.mp3" download>⬇ Download</a>
+      </article>
+
+      <article class="sound-card" data-name="funny laugh">
+        <div class="sound-top">
+          <button class="play" aria-label="Play Funny Laugh"
+            data-audio="sounds/funny-laugh.mp3">▶</button>
+          <div class="sound-info">
+            <div class="sound-name">Funny Laugh</div>
+            <span class="duration">Comedy Sound</span>
+          </div>
+        </div>
+        <a class="download" href="sounds/funny-laugh.mp3" download>⬇ Download</a>
+      </article>
+
+      <article class="sound-card" data-name="sus sound">
+        <div class="sound-top">
+          <button class="play" aria-label="Play Sus Sound"
+            data-audio="sounds/sus.mp3">▶</button>
+          <div class="sound-info">
+            <div class="sound-name">Sus Sound</div>
+            <span class="duration">Suspense Sound</span>
+          </div>
+        </div>
+        <a class="download" href="sounds/sus.mp3" download>⬇ Download</a>
+      </article>
+
+      <article class="sound-card" data-name="emotional damage">
+        <div class="sound-top">
+          <button class="play" aria-label="Play Emotional Damage"
+            data-audio="sounds/emotional-damage.mp3">▶</button>
+          <div class="sound-info">
+            <div class="sound-name">Emotional Damage</div>
+            <span class="duration">Reaction Sound</span>
+          </div>
+        </div>
+        <a class="download" href="sounds/emotional-damage.mp3" download>⬇ Download</a>
+      </article>
+
+      <article class="sound-card" data-name="among us">
+        <div class="sound-top">
+          <button class="play" aria-label="Play Among Us"
+            data-audio="sounds/among-us.mp3">▶</button>
+          <div class="sound-info">
+            <div class="sound-name">Among Us</div>
+            <span class="duration">Game Meme Sound</span>
+          </div>
+        </div>
+        <a class="download" href="sounds/among-us.mp3" download>⬇ Download</a>
+      </article>
+
+    </div>
+    <p class="empty" id="empty">No sounds found.</p>
+  </section>
+
+  <section id="about" style="margin-top:32px">
+    <h2 class="section-title">About Meme Sounds</h2>
+    <p style="color:#a4a4ae;line-height:1.7">
+      Discover meme sounds in one simple place. Find a sound,
+      play it, and download it when the audio file is available.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p>© Meme Sounds</p>
+  <a href="#sounds">Browse Sounds</a>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const menu = document.getElementById("menu");
+
+menuButton.addEventListener("click", () => {
+  const isOpen = menu.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", isOpen);
+});
+
+menu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+  });
+});
+
+const search = document.getElementById("search");
+const cards = [...document.querySelectorAll(".sound-card")];
+const empty = document.getElementById("empty");
+
+search.addEventListener("input", () => {
+  const query = search.value.toLowerCase().trim();
+  let visible = 0;
+
+  cards.forEach(card => {
+    const matches = card.dataset.name.includes(query);
+    card.style.display = matches ? "" : "none";
+    if (matches) visible++;
+  });
+
+  empty.style.display = visible ? "none" : "block";
+});
+
+let currentAudio = null;
+let currentButton = null;
+
+document.querySelectorAll(".play").forEach(button => {
+  button.addEventListener("click", () => {
+    const file = button.dataset.audio;
+
+    if (currentAudio && currentButton === button) {
+      if (!currentAudio.paused) {
+        currentAudio.pause();
+        button.textContent = "▶";
+      } else {
+        currentAudio.play().then(() => {
+          button.textContent = "Ⅱ";
+        }).catch(() => {
+          alert("Audio file not added yet. Upload the MP3 file first.");
+        });
+      }
+      return;
+    }
+
+    if (currentAudio) {
+      currentAudio.pause();
+      if (currentButton) currentButton.textContent = "▶";
+    }
+
+    currentAudio = new Audio(file);
+    currentButton = button;
+
+    currentAudio.play().then(() => {
+      button.textContent = "Ⅱ";
+    }).catch(() => {
+      alert("Audio file not added yet. Upload the MP3 file first.");
+      button.textContent = "▶";
+    });
+
+    currentAudio.addEventListener("ended", () => {
+      button.textContent = "▶";
+    });
+  });
+});
+</script>
+
+</body>
+</html>
