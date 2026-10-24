@@ -4,383 +4,312 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TotalSFX</title>
+<title>TotalSFX - Viral Sound Effects</title>
+<meta name="description" content="Listen to and download viral sound effects on TotalSFX.">
 <style>
 :root {
-  --bg: #0c0c0f;
-  --card: #17171d;
-  --orange: #ff6a00;
-  --amber: #ffb52e;
-  --text: #ffffff;
-  --muted: #a4a4ae;
+  --bg:#09090c; --panel:#17171d; --border:#2b2b34;
+  --text:#fff; --muted:#a6a6b2; --orange:#ff7900; --gold:#ffb52e;
 }
-* { box-sizing: border-box; }
+* { box-sizing:border-box; }
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, sans-serif;
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
 }
 header {
-  padding: 18px 16px;
-  background: #121216;
-  border-bottom: 1px solid #292930;
-  position: sticky;
-  top: 0;
-  z-index: 5;
+  min-height:100px; padding:18px 24px; display:flex;
+  align-items:center; justify-content:space-between;
+  background:#111116; border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:5;
 }
-.nav {
-  max-width: 1000px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.logo {
-  font-size: 23px;
-  font-weight: 900;
-}
-.logo span { color: var(--orange); }
+.logo img { max-height:58px; max-width:190px; object-fit:contain; }
 .menu-button {
-  background: transparent;
-  color: white;
-  border: 1px solid #444;
-  border-radius: 10px;
-  font-size: 22px;
-  padding: 5px 12px;
-  cursor: pointer;
+  color:white; background:#17171d; border:1px solid #3b3b45;
+  border-radius:14px; padding:10px 17px; font-size:25px; cursor:pointer;
 }
-.menu {
-  display: none;
-  max-width: 1000px;
-  margin: 14px auto 0;
-  padding-top: 10px;
-  border-top: 1px solid #292930;
+nav {
+  display:none; position:absolute; right:24px; top:85px;
+  background:#1a1a21; border:1px solid var(--border);
+  border-radius:12px; padding:10px; min-width:180px;
 }
-.menu.open { display: grid; gap: 14px; }
-.menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
+nav.open { display:grid; }
+nav a { color:white; text-decoration:none; padding:12px; border-radius:8px; }
+nav a:hover { background:#303039; }
+main { max-width:1100px; margin:auto; padding:26px 20px 50px; }
+#search {
+  width:100%; padding:19px; margin-bottom:28px; font-size:17px;
+  color:white; background:#17171d; border:1px solid var(--border);
+  border-radius:20px; outline:none;
 }
-main {
-  max-width: 1000px;
-  margin: auto;
-  padding: 25px 14px 45px;
-}
-.hero { text-align: center; padding: 22px 0 25px; }
-.hero h1 {
-  font-size: clamp(29px, 7vw, 46px);
-  margin: 0 0 12px;
-}
-.hero h1 span {
-  color: var(--orange);
-  text-shadow: 0 0 22px #ff6a0044;
-}
-.hero p {
-  color: var(--muted);
-  margin: 0;
-  line-height: 1.6;
-}
-.search {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid #35353e;
-  border-radius: 13px;
-  background: #17171d;
-  color: white;
-  font-size: 15px;
-  outline: none;
-  margin: 10px 0 24px;
-}
-.search:focus { border-color: var(--orange); }
-.section-title {
-  font-size: 21px;
-  margin: 0 0 16px;
-}
-.sound-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+h1 { font-size:28px; margin:12px 0 28px; }
+#sound-list {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px;
 }
 .sound-card {
-  background: linear-gradient(145deg, #1c1c23, #131318);
-  border: 1px solid #303039;
-  border-radius: 16px;
-  padding: 13px;
-  min-width: 0;
-  transition: transform .18s, border-color .18s;
+  min-width:0; background:linear-gradient(145deg,#1a1a21,#121217);
+  border:1px solid var(--border); border-radius:24px;
+  padding:20px; cursor:pointer; transition:border-color .2s;
 }
-.sound-card:active { transform: scale(.97); }
-.sound-card:hover {
-  border-color: #ff6a0088;
-}
-.sound-top {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 43px;
-}
+.sound-card:hover { border-color:#a85b20; }
+.sound-top { display:flex; align-items:center; gap:16px; min-width:0; }
 .play {
-  flex: 0 0 37px;
-  width: 37px;
-  height: 37px;
-  border: none;
-  border-radius: 50%;
-  color: #111;
-  background: linear-gradient(135deg, var(--orange), var(--amber));
-  font-size: 15px;
-  cursor: pointer;
-  box-shadow: 0 0 13px #ff6a0030;
+  flex-shrink:0; width:66px; height:66px; border:0; border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  color:#151515; font-size:25px; cursor:pointer;
+  box-shadow:0 0 16px #ff790033;
 }
-.sound-info { min-width: 0; }
-.sound-name {
-  font-size: 13px;
-  font-weight: bold;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
-}
-.duration {
-  display: block;
-  color: var(--muted);
-  font-size: 11px;
-  margin-top: 5px;
-}
+.sound-info { min-width:0; }
+.sound-name { font-size:19px; font-weight:700; overflow-wrap:anywhere; }
+.sound-desc { color:var(--muted); margin-top:9px; font-size:15px; }
+.duration { color:var(--muted); font-size:13px; margin-top:6px; }
 .download {
-  display: block;
-  width: 100%;
-  margin-top: 14px;
-  padding: 11px 4px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(100deg, var(--orange), var(--amber));
-  color: #17100a;
-  font-size: 12px;
-  font-weight: 800;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
+  display:block; text-align:center; text-decoration:none;
+  margin-top:22px; padding:18px 10px; border-radius:16px;
+  color:#151515; font-size:17px; font-weight:bold;
+  background:linear-gradient(100deg,var(--orange),var(--gold));
 }
-.empty {
-  display: none;
-  text-align: center;
-  color: var(--muted);
-  padding: 25px 0;
+.download:hover { filter:brightness(1.08); }
+#detail { display:none; }
+.back {
+  border:1px solid var(--border); border-radius:12px; padding:12px 16px;
+  color:white; background:var(--panel); cursor:pointer; margin-bottom:22px;
 }
-footer {
-  border-top: 1px solid #292930;
-  text-align: center;
-  padding: 24px 12px;
-  color: var(--muted);
-  font-size: 13px;
+.detail-card {
+  background:var(--panel); border:1px solid var(--border);
+  border-radius:24px; padding:28px; text-align:center;
 }
-footer a { color: var(--amber); text-decoration: none; }
-@media (min-width: 650px) {
-  .sound-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  main { padding-top: 35px; }
-  .sound-card { padding: 17px; }
-  .sound-name { font-size: 15px; }
+.detail-card .play { width:82px; height:82px; font-size:30px; }
+.detail-card h2 { overflow-wrap:anywhere; }
+.detail-card .download { max-width:500px; margin:24px auto 0; }
+#related-title { margin-top:32px; }
+footer { text-align:center; color:var(--muted); padding:25px; }
+.empty { color:var(--muted); grid-column:1/-1; padding:20px; }
+@media(max-width:600px) {
+  header { min-height:88px; padding:14px 18px; }
+  .logo img { max-height:48px; max-width:130px; }
+  main { padding:22px 14px 38px; }
+  #sound-list { gap:10px; }
+  .sound-card { padding:12px; border-radius:20px; }
+  .sound-top { gap:10px; align-items:center; }
+  .play { width:48px; height:48px; font-size:20px; }
+  .sound-name { font-size:15px; }
+  .sound-desc { font-size:12px; margin-top:6px; }
+  .duration { font-size:11px; }
+  .download { font-size:14px; padding:14px 5px; margin-top:15px; }
+  h1 { font-size:24px; }
 }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="nav">
-    <div class="logo">
-  <img src="1792766713405.png" alt="TotalSFX Logo" style="height:45px; width:auto;">
-</div>
-    <button class="menu-button" id="menuButton"
-      aria-label="Open menu" aria-expanded="false">☰</button>
-  </div>
-  <nav class="menu" id="menu">
-    <a href="index.html">Home</a>
-    <a href="#sounds">Browse Sounds</a>
-    <a href="#about">About</a>
-    <a href="mailto:">Contact by Email</a>
+  <a class="logo" href="#" aria-label="TotalSFX Home">
+    <img src="1792766713405.png" alt="TotalSFX Logo">
+  </a>
+  <button class="menu-button" id="menu-button" aria-label="Open menu">☰</button>
+  <nav id="menu">
+    <a href="#" id="home-link">Home</a>
+    <a href="#browse" id="browse-link">Browse Sounds</a>
+    <a href="#about" id="about-link">About</a>
+    <a href="#contact" id="contact-link">Contact</a>
   </nav>
 </header>
 
 <main>
-  <section class="hero">
-    <h1>Find Your <span>Meme Sound</span></h1>
-    <p>Explore funny sounds and discover your next favourite audio.</p>
+  <section id="home">
+    <input id="search" type="search" placeholder="Search sound effects..." aria-label="Search sounds">
+    <h1>🔥 Popular Sounds</h1>
+    <div id="sound-list"></div>
   </section>
 
-  <input class="search" id="search"
-    type="search" placeholder="Search meme sounds..."
-    aria-label="Search sounds">
-
-  <section id="sounds">
-    <h2 class="section-title">🔥 Popular Sounds</h2>
-    <div class="sound-grid" id="soundGrid">
-
-      <article class="sound-card" data-name="bruh sound">
-        <div class="sound-top">
-          <button class="play" aria-label="Play Bruh Sound"
-            data-audio="sounds/bruh.mp3">▶</button>
-          <div class="sound-info">
-            <div class="sound-name">Bruh Sound</div>
-            <span class="duration">Funny Sound</span>
-          </div>
-        </div>
-        <a class="download" href="sounds/bruh.mp3" download>⬇ Download</a>
-      </article>
-
-      <article class="sound-card" data-name="vine boom">
-        <div class="sound-top">
-          <button class="play" aria-label="Play Vine Boom"
-            data-audio="vine-boom.mp3"
-          <div class="sound-info">
-            <div class="sound-name">Vine Boom</div>
-            <span class="duration">Impact Sound</span>
-          </div>
-        </div>
-        href="vine-boom.mp3"
-      </article>
-
-      <article class="sound-card" data-name="funny laugh">
-        <div class="sound-top">
-          <button class="play" aria-label="Play Funny Laugh"
-            data-audio="sounds/funny-laugh.mp3">▶</button>
-          <div class="sound-info">
-            <div class="sound-name">Funny Laugh</div>
-            <span class="duration">Comedy Sound</span>
-          </div>
-        </div>
-        <a class="download" href="sounds/funny-laugh.mp3" download>⬇ Download</a>
-      </article>
-
-      <article class="sound-card" data-name="sus sound">
-        <div class="sound-top">
-          <button class="play" aria-label="Play Sus Sound"
-            data-audio="sounds/sus.mp3">▶</button>
-          <div class="sound-info">
-            <div class="sound-name">Sus Sound</div>
-            <span class="duration">Suspense Sound</span>
-          </div>
-        </div>
-        <a class="download" href="sounds/sus.mp3" download>⬇ Download</a>
-      </article>
-
-      <article class="sound-card" data-name="emotional damage">
-        <div class="sound-top">
-          <button class="play" aria-label="Play Emotional Damage"
-            data-audio="sounds/emotional-damage.mp3">▶</button>
-          <div class="sound-info">
-            <div class="sound-name">Emotional Damage</div>
-            <span class="duration">Reaction Sound</span>
-          </div>
-        </div>
-        <a class="download" href="sounds/emotional-damage.mp3" download>⬇ Download</a>
-      </article>
-
-      <article class="sound-card" data-name="among us">
-        <div class="sound-top">
-          <button class="play" aria-label="Play Among Us"
-            data-audio="sounds/among-us.mp3">▶</button>
-          <div class="sound-info">
-            <div class="sound-name">Among Us</div>
-            <span class="duration">Game Meme Sound</span>
-          </div>
-        </div>
-        <a class="download" href="sounds/among-us.mp3" download>⬇ Download</a>
-      </article>
-
-    </div>
-    <p class="empty" id="empty">No sounds found.</p>
-  </section>
-
-  <section id="about" style="margin-top:32px">
-    <h2 class="section-title">About Meme Sounds</h2>
-    <p style="color:#a4a4ae;line-height:1.7">
-      Discover meme sounds in one simple place. Find a sound,
-      play it, and download it when the audio file is available.
-    </p>
+  <section id="detail">
+    <button class="back" id="back-button">← Back to sounds</button>
+    <div class="detail-card" id="detail-content"></div>
+    <h2 id="related-title">Related Sounds</h2>
+    <div id="related-list"></div>
   </section>
 </main>
 
-<footer>
-  <p>© Meme Sounds</p>
-  <a href="#sounds">Browse Sounds</a>
-</footer>
+<footer>© <span id="year"></span> TotalSFX</footer>
 
 <script>
-const menuButton = document.getElementById("menuButton");
-const menu = document.getElementById("menu");
+const sounds = [
+  {name:"Indian Haha", file:"Indian haha .mp3", desc:"Funny Sound"},
+  {name:"Ack Sound", file:"ack.mp3", desc:"Reaction Sound"},
+  {name:"Chalo SFX", file:"chalo sfx .mp3", desc:"Indian Sound Effect"},
+  {name:"Chicken Screaming", file:"chicken-on-tree-screaming.mp3", desc:"Funny Sound"},
+  {name:"Faaah Sound", file:"faaah.mp3", desc:"Viral Sound Effect"},
+  {name:"Gop Gop Gop", file:"gopgopgop.mp3", desc:"Meme Sound"},
+  {name:"Mixkit Hard Pop Click", file:"mixkit-hard-pop-click-2364.wav", desc:"Click Sound"},
+  {name:"Movie Sound", file:"movie_1.mp3", desc:"Movie Sound Effect"},
+  {name:"Perfect Fart", file:"perfect-fart.mp3", desc:"Funny Sound"},
+  {name:"SpongeBob Fail", file:"spongebob-fail.mp3", desc:"Fail Sound"},
+  {name:"Undertaker Bell", file:"undertakers-bell_2UwFCle.mp3", desc:"Bell Sound"},
+  {name:"Vine Boom", file:"vine-boom.mp3", desc:"Viral Meme Sound"},
+  {name:"Wrong Answer", file:"wrong-answer-sound-effect.mp3", desc:"Wrong Answer Sound"},
+  {name:"U1 Sound Effect", file:"u_1pruylktlg-riser-7-130957.mp3", desc:"Riser Sound"}
+];
 
-menuButton.addEventListener("click", () => {
-  const isOpen = menu.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", isOpen);
-});
-
-menu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-  });
-});
-
+const list = document.getElementById("sound-list");
+const relatedList = document.getElementById("related-list");
+const home = document.getElementById("home");
+const detail = document.getElementById("detail");
 const search = document.getElementById("search");
-const cards = [...document.querySelectorAll(".sound-card")];
-const empty = document.getElementById("empty");
-
-search.addEventListener("input", () => {
-  const query = search.value.toLowerCase().trim();
-  let visible = 0;
-
-  cards.forEach(card => {
-    const matches = card.dataset.name.includes(query);
-    card.style.display = matches ? "" : "none";
-    if (matches) visible++;
-  });
-
-  empty.style.display = visible ? "none" : "block";
-});
-
+const menu = document.getElementById("menu");
 let currentAudio = null;
-let currentButton = null;
 
-document.querySelectorAll(".play").forEach(button => {
-  button.addEventListener("click", () => {
-    const file = button.dataset.audio;
+function makeAudio(sound) {
+  const audio = new Audio(sound.file);
+  audio.preload = "metadata";
+  return audio;
+}
 
-    if (currentAudio && currentButton === button) {
-      if (!currentAudio.paused) {
-        currentAudio.pause();
-        button.textContent = "▶";
-      } else {
-        currentAudio.play().then(() => {
-          button.textContent = "Ⅱ";
-        }).catch(() => {
-          alert("Audio file not added yet. Upload the MP3 file first.");
-        });
-      }
-      return;
-    }
+function durationText(sound) {
+  const audio = makeAudio(sound);
+  audio.addEventListener("loadedmetadata", () => {
+    document.querySelectorAll('[data-duration="' + sound.file.replace(/"/g,"") + '"]')
+      .forEach(el => el.textContent =
+        Number.isFinite(audio.duration) ? formatDuration(audio.duration) : "Duration unavailable");
+  }, {once:true});
+  audio.addEventListener("error", () => {
+    document.querySelectorAll('[data-duration="' + sound.file.replace(/"/g,"") + '"]')
+      .forEach(el => el.textContent = "Audio unavailable");
+  }, {once:true});
+  return audio;
+}
 
-    if (currentAudio) {
-      currentAudio.pause();
-      if (currentButton) currentButton.textContent = "▶";
-    }
+function formatDuration(seconds) {
+  if (!Number.isFinite(seconds)) return "Duration unavailable";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60).toString().padStart(2,"0");
+  return mins ? mins + ":" + secs : "0:" + secs;
+}
 
-    currentAudio = new Audio(file);
-    currentButton = button;
+function stopAudio() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  document.querySelectorAll(".play").forEach(button => button.textContent = "▶");
+}
 
-    currentAudio.play().then(() => {
-      button.textContent = "Ⅱ";
-    }).catch(() => {
-      alert("Audio file not added yet. Upload the MP3 file first.");
-      button.textContent = "▶";
-    });
-
-    currentAudio.addEventListener("ended", () => {
-      button.textContent = "▶";
-    });
+function playSound(sound, button) {
+  if (currentAudio && currentAudio.src.endsWith(encodeURI(sound.file))) {
+    stopAudio();
+    return;
+  }
+  stopAudio();
+  const audio = makeAudio(sound);
+  currentAudio = audio;
+  button.textContent = "Ⅱ";
+  audio.play().then(() => {
+    audio.addEventListener("ended", stopAudio, {once:true});
+  }).catch(() => {
+    button.textContent = "▶";
+    alert("Sound play nahi hua. MP3 file ka naam aur path check karein: " + sound.file);
   });
-});
-</script>
+}
 
+function createCard(sound) {
+  const card = document.createElement("article");
+  card.className = "sound-card";
+  card.innerHTML = `
+    <div class="sound-top">
+      <button class="play" aria-label="Play ${sound.name}">▶</button>
+      <div class="sound-info">
+        <div class="sound-name"></div>
+        <div class="sound-desc"></div>
+        <div class="duration" data-duration="${sound.file}">Loading duration...</div>
+      </div>
+    </div>
+    <a class="download" download>⬇ Download</a>`;
+  card.querySelector(".sound-name").textContent = sound.name;
+  card.querySelector(".sound-desc").textContent = sound.desc;
+  card.querySelector(".download").href = sound.file;
+  card.querySelector(".play").addEventListener("click", event => {
+    event.stopPropagation();
+    playSound(sound, card.querySelector(".play"));
+  });
+  card.querySelector(".download").addEventListener("click", event => event.stopPropagation());
+  card.addEventListener("click", () => showDetail(sound));
+  durationText(sound);
+  return card;
+}
+
+function renderSounds(query = "") {
+  stopAudio();
+  list.replaceChildren();
+  const filtered = sounds.filter(sound =>
+    (sound.name + " " + sound.desc + " " + sound.file).toLowerCase().includes(query.toLowerCase())
+  );
+  if (!filtered.length) {
+    list.innerHTML = '<p class="empty">No sounds found. Try another search.</p>';
+    return;
+  }
+  filtered.forEach(sound => list.appendChild(createCard(sound)));
+}
+
+function showDetail(sound) {
+  stopAudio();
+  home.style.display = "none";
+  detail.style.display = "block";
+  document.getElementById("detail-content").replaceChildren();
+  const panel = document.getElementById("detail-content");
+  const play = document.createElement("button");
+  play.className = "play";
+  play.textContent = "▶";
+  play.addEventListener("click", () => playSound(sound, play));
+  const heading = document.createElement("h2");
+  heading.textContent = sound.name;
+  const description = document.createElement("p");
+  description.textContent = sound.desc;
+  description.style.color = "var(--muted)";
+  const duration = document.createElement("p");
+  duration.className = "duration";
+  duration.textContent = "Loading duration...";
+  duration.setAttribute("data-duration", sound.file);
+  const download = document.createElement("a");
+  download.className = "download";
+  download.href = sound.file;
+  download.download = "";
+  download.textContent = "⬇ Download Sound";
+  panel.append(play, heading, description, duration, download);
+  relatedList.replaceChildren();
+  sounds.filter(item => item.file !== sound.file).slice(0,4)
+    .forEach(item => relatedList.appendChild(createCard(item)));
+  history.replaceState(null, "", "#sound");
+  window.scrollTo({top:0,behavior:"smooth"});
+  durationText(sound);
+}
+
+function showHome() {
+  stopAudio();
+  detail.style.display = "none";
+  home.style.display = "block";
+  history.replaceState(null, "", location.pathname);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+document.getElementById("back-button").addEventListener("click", showHome);
+document.getElementById("menu-button").addEventListener("click", () => menu.classList.toggle("open"));
+document.getElementById("home-link").addEventListener("click", event => {
+  event.preventDefault(); menu.classList.remove("open"); showHome();
+});
+document.getElementById("browse-link").addEventListener("click", event => {
+  event.preventDefault(); menu.classList.remove("open"); showHome();
+  search.focus(); document.getElementById("search").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("about-link").addEventListener("click", event => {
+  event.preventDefault(); menu.classList.remove("open");
+  alert("TotalSFX — Listen to and download sound effects.");
+});
+document.getElementById("contact-link").addEventListener("click", event => {
+  event.preventDefault(); menu.classList.remove("open");
+  alert("Contact details will be added here later.");
+});
+search.addEventListener("input", () => renderSounds(search.value));
+document.getElementById("year").textContent = new Date().getFullYear();
+renderSounds();
+</script>
 </body>
 </html>
