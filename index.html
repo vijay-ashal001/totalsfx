@@ -6,106 +6,325 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TotalSFX - Viral Sound Effects</title>
 <meta name="description" content="Listen to and download viral sound effects on TotalSFX.">
+
 <style>
 :root {
-  --bg:#09090c; --panel:#17171d; --border:#2b2b34;
-  --text:#fff; --muted:#a6a6b2; --orange:#ff7900; --gold:#ffb52e;
+  --bg:#09090c;
+  --panel:#17171d;
+  --border:#2b2b34;
+  --text:#fff;
+  --muted:#a6a6b2;
+  --orange:#ff7900;
+  --gold:#ffb52e;
 }
+
 * { box-sizing:border-box; }
+
 body {
-  margin:0; background:var(--bg); color:var(--text);
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
 }
+
 header {
-  min-height:100px; padding:18px 24px; display:flex;
-  align-items:center; justify-content:space-between;
-  background:#111116; border-bottom:1px solid var(--border);
-  position:sticky; top:0; z-index:5;
+  min-height:100px;
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#111116;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:5;
 }
-.logo img { max-height:58px; max-width:190px; object-fit:contain; }
+
+.logo img {
+  max-height:58px;
+  max-width:190px;
+  object-fit:contain;
+}
+
 .menu-button {
-  color:white; background:#17171d; border:1px solid #3b3b45;
-  border-radius:14px; padding:10px 17px; font-size:25px; cursor:pointer;
+  color:white;
+  background:#17171d;
+  border:1px solid #3b3b45;
+  border-radius:14px;
+  padding:10px 17px;
+  font-size:25px;
+  cursor:pointer;
 }
+
 nav {
-  display:none; position:absolute; right:24px; top:85px;
-  background:#1a1a21; border:1px solid var(--border);
-  border-radius:12px; padding:10px; min-width:180px;
+  display:none;
+  position:absolute;
+  right:24px;
+  top:85px;
+  background:#1a1a21;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+  min-width:180px;
 }
+
 nav.open { display:grid; }
-nav a { color:white; text-decoration:none; padding:12px; border-radius:8px; }
+
+nav a {
+  color:white;
+  text-decoration:none;
+  padding:12px;
+  border-radius:8px;
+}
+
 nav a:hover { background:#303039; }
-main { max-width:1100px; margin:auto; padding:26px 20px 50px; }
+
+main {
+  max-width:1100px;
+  margin:auto;
+  padding:26px 20px 50px;
+}
+
 #search {
-  width:100%; padding:19px; margin-bottom:28px; font-size:17px;
-  color:white; background:#17171d; border:1px solid var(--border);
-  border-radius:20px; outline:none;
+  width:100%;
+  padding:19px;
+  margin-bottom:28px;
+  font-size:17px;
+  color:white;
+  background:#17171d;
+  border:1px solid var(--border);
+  border-radius:20px;
+  outline:none;
 }
-h1 { font-size:28px; margin:12px 0 28px; }
-#sound-list {
-  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px;
+
+#search:focus {
+  border-color:var(--orange);
 }
+
+h1 {
+  font-size:28px;
+  margin:12px 0 28px;
+}
+
+#sound-list,
+#related-list {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+
 .sound-card {
-  min-width:0; background:linear-gradient(145deg,#1a1a21,#121217);
-  border:1px solid var(--border); border-radius:24px;
-  padding:20px; cursor:pointer; transition:border-color .2s;
+  min-width:0;
+  background:linear-gradient(145deg,#1a1a21,#121217);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:20px;
+  cursor:pointer;
+  transition:border-color .2s;
 }
-.sound-card:hover { border-color:#a85b20; }
-.sound-top { display:flex; align-items:center; gap:16px; min-width:0; }
+
+.sound-card:hover {
+  border-color:#a85b20;
+}
+
+.sound-top {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  min-width:0;
+}
+
 .play {
-  flex-shrink:0; width:66px; height:66px; border:0; border-radius:50%;
+  flex-shrink:0;
+  width:66px;
+  height:66px;
+  border:0;
+  border-radius:50%;
   background:linear-gradient(135deg,var(--orange),var(--gold));
-  color:#151515; font-size:25px; cursor:pointer;
+  color:#151515;
+  font-size:25px;
+  cursor:pointer;
   box-shadow:0 0 16px #ff790033;
 }
+
 .sound-info { min-width:0; }
-.sound-name { font-size:19px; font-weight:700; overflow-wrap:anywhere; }
-.sound-desc { color:var(--muted); margin-top:9px; font-size:15px; }
-.duration { color:var(--muted); font-size:13px; margin-top:6px; }
+
+.sound-name {
+  font-size:19px;
+  font-weight:700;
+  overflow-wrap:anywhere;
+}
+
+.sound-desc {
+  color:var(--muted);
+  margin-top:9px;
+  font-size:15px;
+}
+
+.duration {
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
+}
+
 .download {
-  display:block; text-align:center; text-decoration:none;
-  margin-top:22px; padding:18px 10px; border-radius:16px;
-  color:#151515; font-size:17px; font-weight:bold;
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  margin-top:22px;
+  padding:18px 10px;
+  border-radius:16px;
+  color:#151515;
+  font-size:17px;
+  font-weight:bold;
   background:linear-gradient(100deg,var(--orange),var(--gold));
 }
+
 .download:hover { filter:brightness(1.08); }
-#detail { display:none; }
+
+#detail,
+#about-section {
+  display:none;
+}
+
 .back {
-  border:1px solid var(--border); border-radius:12px; padding:12px 16px;
-  color:white; background:var(--panel); cursor:pointer; margin-bottom:22px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px 16px;
+  color:white;
+  background:var(--panel);
+  cursor:pointer;
+  margin-bottom:22px;
 }
+
 .detail-card {
-  background:var(--panel); border:1px solid var(--border);
-  border-radius:24px; padding:28px; text-align:center;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:28px;
+  text-align:center;
 }
-.detail-card .play { width:82px; height:82px; font-size:30px; }
+
+.detail-card .play {
+  width:82px;
+  height:82px;
+  font-size:30px;
+}
+
 .detail-card h2 { overflow-wrap:anywhere; }
-.detail-card .download { max-width:500px; margin:24px auto 0; }
+
+.detail-card .download {
+  max-width:500px;
+  margin:24px auto 0;
+}
+
 #related-title { margin-top:32px; }
-footer { text-align:center; color:var(--muted); padding:25px; }
-.empty { color:var(--muted); grid-column:1/-1; padding:20px; }
+
+#about-section {
+  background:linear-gradient(145deg,#1a1a21,#121217);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
+}
+
+#about-section h2 {
+  color:var(--gold);
+  margin-top:26px;
+}
+
+#about-section p,
+#about-section li {
+  color:var(--muted);
+  line-height:1.7;
+}
+
+#about-section a {
+  color:var(--gold);
+  overflow-wrap:anywhere;
+}
+
+footer {
+  text-align:center;
+  color:var(--muted);
+  padding:25px;
+}
+
+.empty {
+  color:var(--muted);
+  grid-column:1/-1;
+  padding:20px;
+}
+
 @media(max-width:600px) {
-  header { min-height:88px; padding:14px 18px; }
-  .logo img { max-height:48px; max-width:130px; }
+  header {
+    min-height:88px;
+    padding:14px 18px;
+  }
+
+  .logo img {
+    max-height:48px;
+    max-width:130px;
+  }
+
   main { padding:22px 14px 38px; }
-  #sound-list { gap:10px; }
-  .sound-card { padding:12px; border-radius:20px; }
-  .sound-top { gap:10px; align-items:center; }
-  .play { width:48px; height:48px; font-size:20px; }
+
+  #sound-list,
+  #related-list {
+    gap:10px;
+  }
+
+  .sound-card {
+    padding:12px;
+    border-radius:20px;
+  }
+
+  .sound-top {
+    gap:10px;
+    align-items:center;
+  }
+
+  .play {
+    width:48px;
+    height:48px;
+    font-size:20px;
+  }
+
   .sound-name { font-size:15px; }
-  .sound-desc { font-size:12px; margin-top:6px; }
+
+  .sound-desc {
+    font-size:12px;
+    margin-top:6px;
+  }
+
   .duration { font-size:11px; }
-  .download { font-size:14px; padding:14px 5px; margin-top:15px; }
+
+  .download {
+    font-size:14px;
+    padding:14px 5px;
+    margin-top:15px;
+  }
+
   h1 { font-size:24px; }
+
+  #about-section { padding:18px; }
 }
 </style>
 </head>
+
 <body>
+
 <header>
-  <a class="logo" href="#" aria-label="TotalSFX Home">
+  <a class="logo" href="#" id="logo-home" aria-label="TotalSFX Home">
     <img src="1792766713405.png" alt="TotalSFX Logo">
   </a>
-  <button class="menu-button" id="menu-button" aria-label="Open menu">☰</button>
+
+  <button
+    class="menu-button"
+    id="menu-button"
+    aria-label="Open menu"
+    aria-expanded="false"
+  >☰</button>
+
   <nav id="menu">
     <a href="#" id="home-link">Home</a>
     <a href="#browse" id="browse-link">Browse Sounds</a>
@@ -115,18 +334,62 @@ footer { text-align:center; color:var(--muted); padding:25px; }
 </header>
 
 <main>
+
+  <!-- HOME: SOUND LIST -->
   <section id="home">
-    <input id="search" type="search" placeholder="Search sound effects..." aria-label="Search sounds">
+    <input
+      id="search"
+      type="search"
+      placeholder="Search sound effects..."
+      aria-label="Search sounds"
+    >
+
     <h1>🔥 Popular Sounds</h1>
     <div id="sound-list"></div>
   </section>
 
+  <!-- SOUND DETAILS: SECOND PAGE -->
   <section id="detail">
     <button class="back" id="back-button">← Back to sounds</button>
     <div class="detail-card" id="detail-content"></div>
     <h2 id="related-title">Related Sounds</h2>
     <div id="related-list"></div>
   </section>
+
+  <!-- ABOUT: SAME WEBSITE, NO THIRD PAGE -->
+  <section id="about-section">
+    <button class="back" id="about-back-button">← Back to sounds</button>
+
+    <h1>About TotalSFX</h1>
+    <p>
+      TotalSFX is a place to discover, listen to, and download sound effects.
+    </p>
+
+    <h2>Our Sounds</h2>
+    <p>
+      Explore funny sounds, viral effects, reaction sounds, and other audio clips.
+      Tap a sound card to view its details and related sounds.
+    </p>
+
+    <h2>Free Downloads</h2>
+    <p>
+      Use the Download button to download available audio files.
+      Downloads depend on the corresponding sound file being available.
+    </p>
+
+    <h2>Copyright</h2>
+    <p>
+      Please use audio only when you have the rights or permission to do so.
+      If you have a question about a sound, contact us.
+    </p>
+
+    <h2>Contact Us</h2>
+    <p>
+      Email:
+      <a href="mailto:urvijay03@gmail.com">urvijay03@gmail.com</a>
+    </p>
+  </section>
+
 </main>
 
 <footer>© <span id="year"></span> TotalSFX</footer>
@@ -153,8 +416,11 @@ const list = document.getElementById("sound-list");
 const relatedList = document.getElementById("related-list");
 const home = document.getElementById("home");
 const detail = document.getElementById("detail");
+const aboutSection = document.getElementById("about-section");
 const search = document.getElementById("search");
 const menu = document.getElementById("menu");
+const menuButton = document.getElementById("menu-button");
+
 let currentAudio = null;
 
 function makeAudio(sound) {
@@ -163,25 +429,38 @@ function makeAudio(sound) {
   return audio;
 }
 
-function durationText(sound) {
-  const audio = makeAudio(sound);
-  audio.addEventListener("loadedmetadata", () => {
-    document.querySelectorAll('[data-duration="' + sound.file.replace(/"/g,"") + '"]')
-      .forEach(el => el.textContent =
-        Number.isFinite(audio.duration) ? formatDuration(audio.duration) : "Duration unavailable");
-  }, {once:true});
-  audio.addEventListener("error", () => {
-    document.querySelectorAll('[data-duration="' + sound.file.replace(/"/g,"") + '"]')
-      .forEach(el => el.textContent = "Audio unavailable");
-  }, {once:true});
-  return audio;
-}
-
 function formatDuration(seconds) {
   if (!Number.isFinite(seconds)) return "Duration unavailable";
+
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60).toString().padStart(2,"0");
+
   return mins ? mins + ":" + secs : "0:" + secs;
+}
+
+function durationText(sound) {
+  const audio = makeAudio(sound);
+
+  const selector =
+    '[data-duration="' +
+    sound.file.replace(/\\/g,"\\\\").replace(/"/g,'\\"') +
+    '"]';
+
+  audio.addEventListener("loadedmetadata", () => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.textContent = Number.isFinite(audio.duration)
+        ? formatDuration(audio.duration)
+        : "Duration unavailable";
+    });
+  }, {once:true});
+
+  audio.addEventListener("error", () => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.textContent = "Audio unavailable";
+    });
+  }, {once:true});
+
+  return audio;
 }
 
 function stopAudio() {
@@ -190,126 +469,229 @@ function stopAudio() {
     currentAudio.currentTime = 0;
     currentAudio = null;
   }
-  document.querySelectorAll(".play").forEach(button => button.textContent = "▶");
+
+  document.querySelectorAll(".play").forEach(button => {
+    button.textContent = "▶";
+  });
 }
 
 function playSound(sound, button) {
-  if (currentAudio && currentAudio.src.endsWith(encodeURI(sound.file))) {
+  if (
+    currentAudio &&
+    currentAudio.src.endsWith(encodeURI(sound.file))
+  ) {
     stopAudio();
     return;
   }
+
   stopAudio();
+
   const audio = makeAudio(sound);
   currentAudio = audio;
   button.textContent = "Ⅱ";
-  audio.play().then(() => {
-    audio.addEventListener("ended", stopAudio, {once:true});
-  }).catch(() => {
+
+  audio.addEventListener("ended", stopAudio, {once:true});
+
+  audio.play().catch(() => {
+    if (currentAudio === audio) currentAudio = null;
     button.textContent = "▶";
-    alert("Sound play nahi hua. MP3 file ka naam aur path check karein: " + sound.file);
+    alert(
+      "Sound play nahi hua. MP3 file ka naam aur path check karein: " +
+      sound.file
+    );
   });
 }
 
 function createCard(sound) {
   const card = document.createElement("article");
   card.className = "sound-card";
+
   card.innerHTML = `
     <div class="sound-top">
-      <button class="play" aria-label="Play ${sound.name}">▶</button>
+      <button class="play" aria-label="Play">▶</button>
       <div class="sound-info">
         <div class="sound-name"></div>
         <div class="sound-desc"></div>
         <div class="duration" data-duration="${sound.file}">Loading duration...</div>
       </div>
     </div>
-    <a class="download" download>⬇ Download</a>`;
+    <a class="download" download>⬇ Download</a>
+  `;
+
   card.querySelector(".sound-name").textContent = sound.name;
   card.querySelector(".sound-desc").textContent = sound.desc;
-  card.querySelector(".download").href = sound.file;
-  card.querySelector(".play").addEventListener("click", event => {
+
+  const playButton = card.querySelector(".play");
+  playButton.setAttribute("aria-label", "Play " + sound.name);
+  playButton.addEventListener("click", event => {
     event.stopPropagation();
-    playSound(sound, card.querySelector(".play"));
+    playSound(sound, playButton);
   });
-  card.querySelector(".download").addEventListener("click", event => event.stopPropagation());
+
+  const download = card.querySelector(".download");
+  download.href = sound.file;
+  download.addEventListener("click", event => {
+    event.stopPropagation();
+  });
+
   card.addEventListener("click", () => showDetail(sound));
+
   durationText(sound);
+
   return card;
 }
 
 function renderSounds(query = "") {
   stopAudio();
   list.replaceChildren();
+
   const filtered = sounds.filter(sound =>
-    (sound.name + " " + sound.desc + " " + sound.file).toLowerCase().includes(query.toLowerCase())
+    (sound.name + " " + sound.desc + " " + sound.file)
+      .toLowerCase()
+      .includes(query.toLowerCase())
   );
+
   if (!filtered.length) {
-    list.innerHTML = '<p class="empty">No sounds found. Try another search.</p>';
+    list.innerHTML =
+      '<p class="empty">No sounds found. Try another search.</p>';
     return;
   }
-  filtered.forEach(sound => list.appendChild(createCard(sound)));
+
+  filtered.forEach(sound => {
+    list.appendChild(createCard(sound));
+  });
 }
 
 function showDetail(sound) {
   stopAudio();
+
   home.style.display = "none";
+  aboutSection.style.display = "none";
   detail.style.display = "block";
-  document.getElementById("detail-content").replaceChildren();
+
   const panel = document.getElementById("detail-content");
+  panel.replaceChildren();
+
   const play = document.createElement("button");
   play.className = "play";
   play.textContent = "▶";
+  play.setAttribute("aria-label", "Play " + sound.name);
   play.addEventListener("click", () => playSound(sound, play));
+
   const heading = document.createElement("h2");
   heading.textContent = sound.name;
+
   const description = document.createElement("p");
   description.textContent = sound.desc;
   description.style.color = "var(--muted)";
+
   const duration = document.createElement("p");
   duration.className = "duration";
   duration.textContent = "Loading duration...";
   duration.setAttribute("data-duration", sound.file);
+
   const download = document.createElement("a");
   download.className = "download";
   download.href = sound.file;
   download.download = "";
   download.textContent = "⬇ Download Sound";
+
   panel.append(play, heading, description, duration, download);
+
   relatedList.replaceChildren();
-  sounds.filter(item => item.file !== sound.file).slice(0,4)
+
+  sounds
+    .filter(item => item.file !== sound.file)
+    .slice(0,4)
     .forEach(item => relatedList.appendChild(createCard(item)));
+
   history.replaceState(null, "", "#sound");
   window.scrollTo({top:0,behavior:"smooth"});
+
   durationText(sound);
 }
 
 function showHome() {
   stopAudio();
+
   detail.style.display = "none";
+  aboutSection.style.display = "none";
   home.style.display = "block";
+
   history.replaceState(null, "", location.pathname);
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
-document.getElementById("back-button").addEventListener("click", showHome);
-document.getElementById("menu-button").addEventListener("click", () => menu.classList.toggle("open"));
+function showAbout() {
+  stopAudio();
+
+  home.style.display = "none";
+  detail.style.display = "none";
+  aboutSection.style.display = "block";
+
+  history.replaceState(null, "", "#about");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function closeMenu() {
+  menu.classList.remove("open");
+  menuButton.setAttribute("aria-expanded", "false");
+}
+
+document.getElementById("back-button")
+  .addEventListener("click", showHome);
+
+document.getElementById("about-back-button")
+  .addEventListener("click", showHome);
+
+document.getElementById("logo-home").addEventListener("click", event => {
+  event.preventDefault();
+  closeMenu();
+  showHome();
+});
+
+menuButton.addEventListener("click", () => {
+  const isOpen = menu.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+});
+
 document.getElementById("home-link").addEventListener("click", event => {
-  event.preventDefault(); menu.classList.remove("open"); showHome();
+  event.preventDefault();
+  closeMenu();
+  showHome();
 });
+
 document.getElementById("browse-link").addEventListener("click", event => {
-  event.preventDefault(); menu.classList.remove("open"); showHome();
-  search.focus(); document.getElementById("search").scrollIntoView({behavior:"smooth"});
+  event.preventDefault();
+  closeMenu();
+  showHome();
+
+  search.focus();
+  search.scrollIntoView({behavior:"smooth",block:"center"});
 });
+
 document.getElementById("about-link").addEventListener("click", event => {
-  event.preventDefault(); menu.classList.remove("open");
-  alert("TotalSFX — Listen to and download sound effects.");
+  event.preventDefault();
+  closeMenu();
+  showAbout();
 });
+
 document.getElementById("contact-link").addEventListener("click", event => {
-  event.preventDefault(); menu.classList.remove("open");
-  alert("Contact details will be added here later.");
+  event.preventDefault();
+  closeMenu();
+
+  window.location.href =
+    "mailto:urvijay03@gmail.com?subject=TotalSFX%20Contact";
 });
-search.addEventListener("input", () => renderSounds(search.value));
+
+search.addEventListener("input", () => {
+  renderSounds(search.value);
+});
+
 document.getElementById("year").textContent = new Date().getFullYear();
+
 renderSounds();
 </script>
+
 </body>
 </html>
