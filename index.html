@@ -17,16 +17,13 @@
   --orange:#ff7900;
   --gold:#ffb52e;
 }
-
 * { box-sizing:border-box; }
-
 body {
   margin:0;
   background:var(--bg);
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
 }
-
 header {
   min-height:100px;
   padding:18px 24px;
@@ -39,13 +36,11 @@ header {
   top:0;
   z-index:5;
 }
-
 .logo img {
   max-height:58px;
   max-width:190px;
   object-fit:contain;
 }
-
 .menu-button {
   color:white;
   background:#17171d;
@@ -55,7 +50,6 @@ header {
   font-size:25px;
   cursor:pointer;
 }
-
 nav {
   display:none;
   position:absolute;
@@ -67,24 +61,19 @@ nav {
   padding:10px;
   min-width:180px;
 }
-
 nav.open { display:grid; }
-
 nav a {
   color:white;
   text-decoration:none;
   padding:12px;
   border-radius:8px;
 }
-
 nav a:hover { background:#303039; }
-
 main {
   max-width:1100px;
   margin:auto;
   padding:26px 20px 50px;
 }
-
 #search {
   width:100%;
   padding:19px;
@@ -96,23 +85,16 @@ main {
   border-radius:20px;
   outline:none;
 }
-
-#search:focus {
-  border-color:var(--orange);
-}
-
+#search:focus { border-color:var(--orange); }
 h1 {
   font-size:28px;
   margin:12px 0 28px;
 }
-
-#sound-list,
-#related-list {
+#sound-list,#related-list {
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:16px;
 }
-
 .sound-card {
   min-width:0;
   background:linear-gradient(145deg,#1a1a21,#121217);
@@ -122,18 +104,13 @@ h1 {
   cursor:pointer;
   transition:border-color .2s;
 }
-
-.sound-card:hover {
-  border-color:#a85b20;
-}
-
+.sound-card:hover { border-color:#a85b20; }
 .sound-top {
   display:flex;
   align-items:center;
   gap:16px;
   min-width:0;
 }
-
 .play {
   flex-shrink:0;
   width:66px;
@@ -146,27 +123,22 @@ h1 {
   cursor:pointer;
   box-shadow:0 0 16px #ff790033;
 }
-
 .sound-info { min-width:0; }
-
 .sound-name {
   font-size:19px;
   font-weight:700;
   overflow-wrap:anywhere;
 }
-
 .sound-desc {
   color:var(--muted);
   margin-top:9px;
   font-size:15px;
 }
-
 .duration {
   color:var(--muted);
   font-size:13px;
   margin-top:6px;
 }
-
 .download {
   display:block;
   text-align:center;
@@ -179,14 +151,8 @@ h1 {
   font-weight:bold;
   background:linear-gradient(100deg,var(--orange),var(--gold));
 }
-
 .download:hover { filter:brightness(1.08); }
-
-#detail,
-#about-section {
-  display:none;
-}
-
+#detail,#about-section { display:none; }
 .back {
   border:1px solid var(--border);
   border-radius:12px;
@@ -196,7 +162,6 @@ h1 {
   cursor:pointer;
   margin-bottom:22px;
 }
-
 .detail-card {
   background:var(--panel);
   border:1px solid var(--border);
@@ -204,127 +169,91 @@ h1 {
   padding:28px;
   text-align:center;
 }
-
 .detail-card .play {
   width:82px;
   height:82px;
   font-size:30px;
 }
-
 .detail-card h2 { overflow-wrap:anywhere; }
-
 .detail-card .download {
   max-width:500px;
   margin:24px auto 0;
 }
-
 #related-title { margin-top:32px; }
-
 #about-section {
   background:linear-gradient(145deg,#1a1a21,#121217);
   border:1px solid var(--border);
   border-radius:24px;
   padding:24px;
 }
-
 #about-section h2 {
   color:var(--gold);
   margin-top:26px;
 }
-
-#about-section p,
-#about-section li {
+#about-section p,#about-section li {
   color:var(--muted);
   line-height:1.7;
 }
-
 #about-section a {
   color:var(--gold);
   overflow-wrap:anywhere;
 }
-
 footer {
   text-align:center;
   color:var(--muted);
   padding:25px;
 }
-
 .empty {
   color:var(--muted);
   grid-column:1/-1;
   padding:20px;
 }
-
 @media(max-width:600px) {
   header {
     min-height:88px;
     padding:14px 18px;
   }
-
   .logo img {
     max-height:48px;
     max-width:130px;
   }
-
   main { padding:22px 14px 38px; }
-
-  #sound-list,
-  #related-list {
-    gap:10px;
-  }
-
+  #sound-list,#related-list { gap:10px; }
   .sound-card {
     padding:12px;
     border-radius:20px;
   }
-
-  .sound-top {
-    gap:10px;
-    align-items:center;
-  }
-
+  .sound-top { gap:10px; }
   .play {
     width:48px;
     height:48px;
     font-size:20px;
   }
-
   .sound-name { font-size:15px; }
-
   .sound-desc {
     font-size:12px;
     margin-top:6px;
   }
-
   .duration { font-size:11px; }
-
   .download {
     font-size:14px;
     padding:14px 5px;
     margin-top:15px;
   }
-
   h1 { font-size:24px; }
-
   #about-section { padding:18px; }
 }
 </style>
 </head>
 
 <body>
-
 <header>
   <a class="logo" href="#" id="logo-home" aria-label="TotalSFX Home">
-    <img src="file_00000000e4748211863d23cbe1a952b5.png" alt="TotalSFX Logo" style="height:45px; width:auto;">
+    <img src="file_00000000e4748211863d23cbe1a952b5.png"
+         alt="TotalSFX Logo" style="height:45px;width:auto;">
   </a>
-
-  <button
-    class="menu-button"
-    id="menu-button"
-    aria-label="Open menu"
-    aria-expanded="false"
-  >☰</button>
-
+  <button class="menu-button" id="menu-button"
+          aria-label="Open menu" aria-expanded="false">☰</button>
   <nav id="menu">
     <a href="#" id="home-link">Home</a>
     <a href="#browse" id="browse-link">Browse Sounds</a>
@@ -334,21 +263,14 @@ footer {
 </header>
 
 <main>
-
-  <!-- HOME: SOUND LIST -->
   <section id="home">
-    <input
-      id="search"
-      type="search"
-      placeholder="Search sound effects..."
-      aria-label="Search sounds"
-    >
-
+    <input id="search" type="search"
+           placeholder="Search sound effects..."
+           aria-label="Search sounds">
     <h1>🔥 Popular Sounds</h1>
     <div id="sound-list"></div>
   </section>
 
-  <!-- SOUND DETAILS: SECOND PAGE -->
   <section id="detail">
     <button class="back" id="back-button">← Back to sounds</button>
     <div class="detail-card" id="detail-content"></div>
@@ -356,60 +278,126 @@ footer {
     <div id="related-list"></div>
   </section>
 
-  <!-- ABOUT: SAME WEBSITE, NO THIRD PAGE -->
   <section id="about-section">
     <button class="back" id="about-back-button">← Back to sounds</button>
-
     <h1>About TotalSFX</h1>
-    <p>
-      TotalSFX is a place to discover, listen to, and download sound effects.
-    </p>
-
+    <p>TotalSFX is a place to discover, listen to, and download sound effects.</p>
     <h2>Our Sounds</h2>
-    <p>
-      Explore funny sounds, viral effects, reaction sounds, and other audio clips.
-      Tap a sound card to view its details and related sounds.
-    </p>
-
+    <p>Explore funny sounds, viral effects, reaction sounds, and other audio clips. Tap a sound card to view its details and related sounds.</p>
     <h2>Free Downloads</h2>
-    <p>
-      Use the Download button to download available audio files.
-      Downloads depend on the corresponding sound file being available.
-    </p>
-
+    <p>Use the Download button to download available audio files. Downloads depend on the corresponding sound file being available.</p>
     <h2>Copyright</h2>
-    <p>
-      Please use audio only when you have the rights or permission to do so.
-      If you have a question about a sound, contact us.
-    </p>
-
+    <p>Please use audio only when you have the rights or permission to do so. If you have a question about a sound, contact us.</p>
     <h2>Contact Us</h2>
-    <p>
-      Email:
-      <a href="mailto:urvijay03@gmail.com">urvijay03@gmail.com</a>
-    </p>
+    <p>Email: <a href="mailto:urvijay03@gmail.com">urvijay03@gmail.com</a></p>
   </section>
-
 </main>
 
 <footer>© <span id="year"></span> TotalSFX</footer>
 
 <script>
+// Keep the existing sounds and add the new ones.
+// Filenames must exactly match the files in the GitHub repository.
 const sounds = [
-  {name:"Indian Haha", file:"Indian haha .mp3", desc:"Funny Sound"},
-  {name:"Ack Sound", file:"ack.mp3", desc:"Reaction Sound"},
-  {name:"Chalo SFX", file:"chalo sfx .mp3", desc:"Indian Sound Effect"},
-  {name:"Chicken Screaming", file:"chicken-on-tree-screaming.mp3", desc:"Funny Sound"},
-  {name:"Faaah Sound", file:"faaah.mp3", desc:"Viral Sound Effect"},
-  {name:"Gop Gop Gop", file:"gopgopgop.mp3", desc:"Meme Sound"},
-  {name:"Mixkit Hard Pop Click", file:"mixkit-hard-pop-click-2364.wav", desc:"Click Sound"},
-  {name:"Movie Sound", file:"movie_1.mp3", desc:"Movie Sound Effect"},
-  {name:"Perfect Fart", file:"perfect-fart.mp3", desc:"Funny Sound"},
-  {name:"SpongeBob Fail", file:"spongebob-fail.mp3", desc:"Fail Sound"},
-  {name:"Undertaker Bell", file:"undertakers-bell_2UwFCle.mp3", desc:"Bell Sound"},
-  {name:"Vine Boom", file:"vine-boom.mp3", desc:"Viral Meme Sound"},
-  {name:"Wrong Answer", file:"wrong-answer-sound-effect.mp3", desc:"Wrong Answer Sound"},
-  {name:"U1 Sound Effect", file:"u_1pruylktlg-riser-7-130957.mp3", desc:"Riser Sound"}
+  // ORIGINAL 14 SOUNDS
+  {name:"Indian Haha",file:"Indian haha .mp3",desc:"Funny Sound"},
+  {name:"Ack Sound",file:"ack.mp3",desc:"Reaction Sound"},
+  {name:"Chalo SFX",file:"chalo sfx .mp3",desc:"Indian Sound Effect"},
+  {name:"Chicken Screaming",file:"chicken-on-tree-screaming.mp3",desc:"Funny Sound"},
+  {name:"Faaah Sound",file:"faaah.mp3",desc:"Viral Sound Effect"},
+  {name:"Gop Gop Gop",file:"gopgopgop.mp3",desc:"Meme Sound"},
+  {name:"Mixkit Hard Pop Click",file:"mixkit-hard-pop-click-2364.wav",desc:"Click Sound"},
+  {name:"Movie Sound",file:"movie_1.mp3",desc:"Movie Sound Effect"},
+  {name:"Perfect Fart",file:"perfect-fart.mp3",desc:"Funny Sound"},
+  {name:"SpongeBob Fail",file:"spongebob-fail.mp3",desc:"Fail Sound"},
+  {name:"Undertaker Bell",file:"undertakers-bell_2UwFCle.mp3",desc:"Bell Sound"},
+  {name:"Vine Boom",file:"vine-boom.mp3",desc:"Viral Meme Sound"},
+  {name:"Wrong Answer",file:"wrong-answer-sound-effect.mp3",desc:"Wrong Answer Sound"},
+  {name:"U1 Sound Effect",file:"u_1pruylktlg-riser-7-130957.mp3",desc:"Riser Sound"},
+
+  // NEW SOUNDS
+  {name:"a kon he be Double ismart",file:"a kon he be Double ismart.mp3",desc:"Indian Meme Sound"},
+  {name:"Aaiye dekhte h bc",file:"Aaiye dekhte h bc.mp3",desc:"Indian Meme Sound"},
+  {name:"Aaiye meme",file:"Aaiye meme.mp3",desc:"Meme Sound"},
+  {name:"abe h kon too",file:"abe h kon too.mp3",desc:"Reaction Sound"},
+  {name:"Abhi batata hu memes",file:"Abhi batata hu memes.mp3",desc:"Indian Meme Sound"},
+  {name:"Abhi maza ayega",file:"Abhi maza ayega .mp3",desc:"Viral Meme Sound"},
+  {name:"Acha thik h smjh gya",file:"Acha thik h smjh gya.mp3",desc:"Reaction Sound"},
+  {name:"Achaaa",file:"Achaaa.mp3",desc:"Reaction Sound"},
+  {name:"aha aha",file:"aha aha.mp3",desc:"Funny Sound"},
+  {name:"America kya kehta tha",file:"America kya kehta tha.mp3",desc:"Indian Meme Sound"},
+  {name:"ammi are bacha le",file:"ammi are bacha le.mp3",desc:"Funny Sound"},
+  {name:"Angels Singing",file:"angels-singing.mp3",desc:"Angel Sound Effect"},
+  {name:"Anime Wow",file:"anime wow.mp3",desc:"Anime Sound"},
+  {name:"ara arahh",file:"ara arahh.mp3",desc:"Anime Sound"},
+  {name:"Awkward Moment",file:"Awkward Moment.mp3",desc:"Reaction Sound"},
+  {name:"Bad to the Bone",file:"bad-to-the-bone-meme.mp3",desc:"Meme Sound"},
+  {name:"Bahan ki lagi",file:"Bahan ki lagi.mp3",desc:"Indian Meme Sound"},
+  {name:"Baigan",file:"baigan.mp3",desc:"Funny Sound"},
+  {name:"Bap Re Meme Sounds",file:"bap re meme sounds.mp3",desc:"Indian Meme Sound"},
+  {name:"Basicbeam Fire",file:"basicbeam_fire.mp3",desc:"Fire Sound Effect"},
+  {name:"Brain Aneurysm",file:"brain-aneurysm.mp3",desc:"Meme Sound"},
+  {name:"Bruh",file:"Bruh.mp3",desc:"Viral Meme Sound"},
+  {name:"Buy 1",file:"buy_1.mp3",desc:"Game Sound Effect"},
+  {name:"Camera Shutter",file:"Camera Shutter.mp3",desc:"Camera Sound"},
+  {name:"Cameraman Jaldi Focus",file:"Cameraman jaldi focus.mp3",desc:"Indian Meme Sound"},
+  {name:"Cave 1",file:"cave1_gqB8CwT.mp3",desc:"Sound Effect"},
+  {name:"Chalo Meme",file:"chalo meme.mp3",desc:"Indian Meme Sound"},
+  {name:"Chi Sasur Panchayat Meme",file:"Chi Sasur Panchayat Meme.mp3",desc:"Indian Meme Sound"},
+  {name:"Chup Bilkul Chup",file:"chup bilkul chup.mp3",desc:"Indian Meme Sound"},
+  {name:"Crack the Whip",file:"crack_the_whip.mp3",desc:"Sound Effect"},
+  {name:"Dimag Khrab Ho Gaye",file:"dimag khrab ho gaye.mp3",desc:"Indian Meme Sound"},
+  {name:"Discord Join",file:"Discord Join.mp3",desc:"Discord Sound"},
+  {name:"Dragon Bell",file:"dragon bell.mp3",desc:"Bell Sound Effect"},
+  {name:"Eagle Rahhh",file:"eagle-rahhh.mp3",desc:"Viral Sound Effect"},
+  {name:"Eating",file:"eating.mp3",desc:"Eating Sound"},
+  {name:"Emotional Damage",file:"emotional damage.mp3",desc:"Viral Meme Sound"},
+  {name:"Girl Scream",file:"Girl Scream.mp3",desc:"Scream Sound"},
+  {name:"GTA Meme",file:"gta meme.mp3",desc:"Gaming Meme Sound"},
+  {name:"Hat Be Kon He Tu",file:"hat be kon he tu.mp3",desc:"Indian Meme Sound"},
+  {name:"Helicopter Meme",file:"Helicopter-meme.mp3",desc:"Meme Sound"},
+  {name:"Hey Prabhu",file:"Hey prabhu.mp3",desc:"Indian Meme Sound"},
+  {name:"Ht Be Teri Behen Ki",file:"Ht be teri behen ki.mp3",desc:"Indian Meme Sound"},
+  {name:"Huh",file:"huh.mp3",desc:"Reaction Sound"},
+  {name:"Jaldi Waha Se Hato",file:"Jaldi waha se hato.mp3",desc:"Indian Meme Sound"},
+  {name:"Jhukega Nahi Sala",file:"jhukega nahi sala.mp3",desc:"Indian Meme Sound"},
+  {name:"Kaise Kaise Log Rehte H",file:"Kaise kaise log rehte h.mp3",desc:"Indian Meme Sound"},
+  {name:"Khao Maa Kasaam",file:"Khao Maa kasaam.mp3",desc:"Indian Meme Sound"},
+  {name:"Khelega Free Fire",file:"khelega free fire.mp3",desc:"Gaming Meme Sound"},
+  {name:"Kids Cheering",file:"Kids Cheering.mp3",desc:"Cheering Sound"},
+  {name:"Kon H Be",file:"Kon h be.mp3",desc:"Indian Meme Sound"},
+  {name:"Kon H Ye Log",file:"Kon h ye log.mp3",desc:"Indian Meme Sound"},
+  {name:"Kuch To Gadbad H",file:"Kuch to gadbad h.mp3",desc:"Indian Meme Sound"},
+  {name:"Kya Haal Hai",file:"Kya Haal hai.mp3",desc:"Indian Meme Sound"},
+  {name:"Kya Zulm Hai Meme",file:"Kya Zulm Hai Meme.mp3",desc:"Indian Meme Sound"},
+  {name:"Kyu Kya Hui",file:"kyu kya hui.mp3",desc:"Reaction Sound"},
+  {name:"Ladle Meow Ghop",file:"ladle meow ghop.mp3",desc:"Funny Sound"},
+  {name:"Lekin 1 Sec",file:"Lekin 1 sec.mp3",desc:"Reaction Sound"},
+  {name:"Lekin Ye Sala Kar Kya Raha",file:"Lekin ye sala kar kya raha.mp3",desc:"Indian Meme Sound"},
+  {name:"Mario Coin Sound",file:"Mario Coin Sound.mp3",desc:"Game Sound Effect"},
+  {name:"Minecraft Door",file:"Minecraft Door.mp3",desc:"Game Sound Effect"},
+  {name:"Minecraft Eating",file:"Minecraft Eating.mp3",desc:"Game Sound Effect"},
+  {name:"Nahi",file:"Nahi.mp3",desc:"Reaction Sound"},
+  {name:"Nai Nai Nai",file:"nai nai nai.mp3",desc:"Indian Meme Sound"},
+  {name:"Noooooou",file:"noooooou.mp3",desc:"Reaction Sound"},
+  {name:"O My God Oaah",file:"o my god oaah.mp3",desc:"Reaction Sound"},
+  {name:"Piche To Dekho",file:"Piche to dekho.mp3",desc:"Indian Meme Sound"},
+  {name:"Reverb Fart",file:"reverb fart.mp3",desc:"Funny Sound"},
+  {name:"RIZZ",file:"RIZZ.mp3",desc:"Viral Sound Effect"},
+  {name:"Ruko Jara Sabar Karo",file:"Ruko_Jara_Sabar_Karo(256k).mp3",desc:"Indian Meme Sound"},
+  {name:"Run",file:"run.mp3",desc:"Sound Effect"},
+  {name:"Sab Ke Sab Chor Hain Sale",file:"sab ke sab chor hain sale.mp3",desc:"Indian Meme Sound"},
+  {name:"Sabas Beta",file:"Sabas beta.mp3",desc:"Indian Meme Sound"},
+  {name:"Sale Tu",file:"Sale tu.mp3",desc:"Indian Meme Sound"},
+  {name:"Sigma",file:"sigma.mp3",desc:"Viral Meme Sound"},
+  {name:"Spiderman Song Meme",file:"spiderman song meme.mp3",desc:"Meme Sound"},
+  {name:"Teri Maa Ka",file:"Teri maa ka .mp3",desc:"Indian Meme Sound"},
+  {name:"Tum Tum Tedeu",file:"tum tum tedeu.mp3",desc:"Meme Sound"},
+  {name:"Viccchi Viccche",file:"viccchi viccche.mp3",desc:"Meme Sound"},
+  {name:"Wow Very Beautiful",file:"Wow very beautiful.mp3",desc:"Reaction Sound"},
+  {name:"Ye Kya H",file:"Ye kya h.mp3",desc:"Reaction Sound"},
+  {name:"Ye Leee",file:"Ye leee.mp3",desc:"Indian Meme Sound"},
+  {name:"Ye Sbb Kya Dekhna Pd Ra",file:"Ye sbb kya dekhna pd ra.mp3",desc:"Reaction Sound"}
 ];
 
 const list = document.getElementById("sound-list");
@@ -431,20 +419,15 @@ function makeAudio(sound) {
 
 function formatDuration(seconds) {
   if (!Number.isFinite(seconds)) return "Duration unavailable";
-
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60).toString().padStart(2,"0");
-
   return mins ? mins + ":" + secs : "0:" + secs;
 }
 
 function durationText(sound) {
   const audio = makeAudio(sound);
-
-  const selector =
-    '[data-duration="' +
-    sound.file.replace(/\\/g,"\\\\").replace(/"/g,'\\"') +
-    '"]';
+  const selector = '[data-duration="' +
+    CSS.escape(sound.file) + '"]';
 
   audio.addEventListener("loadedmetadata", () => {
     document.querySelectorAll(selector).forEach(el => {
@@ -459,8 +442,6 @@ function durationText(sound) {
       el.textContent = "Audio unavailable";
     });
   }, {once:true});
-
-  return audio;
 }
 
 function stopAudio() {
@@ -469,43 +450,34 @@ function stopAudio() {
     currentAudio.currentTime = 0;
     currentAudio = null;
   }
-
   document.querySelectorAll(".play").forEach(button => {
     button.textContent = "▶";
   });
 }
 
 function playSound(sound, button) {
-  if (
-    currentAudio &&
-    currentAudio.src.endsWith(encodeURI(sound.file))
-  ) {
+  if (currentAudio && currentAudio.dataset.filename === sound.file) {
     stopAudio();
     return;
   }
 
   stopAudio();
-
   const audio = makeAudio(sound);
+  audio.dataset.filename = sound.file;
   currentAudio = audio;
   button.textContent = "Ⅱ";
 
   audio.addEventListener("ended", stopAudio, {once:true});
-
   audio.play().catch(() => {
     if (currentAudio === audio) currentAudio = null;
     button.textContent = "▶";
-    alert(
-      "Sound play nahi hua. MP3 file ka naam aur path check karein: " +
-      sound.file
-    );
+    alert("Sound play nahi hua. GitHub par file name/path check karein: " + sound.file);
   });
 }
 
 function createCard(sound) {
   const card = document.createElement("article");
   card.className = "sound-card";
-
   card.innerHTML = `
     <div class="sound-top">
       <button class="play" aria-label="Play">▶</button>
@@ -522,22 +494,18 @@ function createCard(sound) {
   card.querySelector(".sound-desc").textContent = sound.desc;
 
   const playButton = card.querySelector(".play");
-  playButton.setAttribute("aria-label", "Play " + sound.name);
-  playButton.addEventListener("click", event => {
+  playButton.setAttribute("aria-label","Play " + sound.name);
+  playButton.addEventListener("click",event => {
     event.stopPropagation();
-    playSound(sound, playButton);
+    playSound(sound,playButton);
   });
 
   const download = card.querySelector(".download");
   download.href = sound.file;
-  download.addEventListener("click", event => {
-    event.stopPropagation();
-  });
+  download.addEventListener("click",event => event.stopPropagation());
 
-  card.addEventListener("click", () => showDetail(sound));
-
+  card.addEventListener("click",() => showDetail(sound));
   durationText(sound);
-
   return card;
 }
 
@@ -547,24 +515,18 @@ function renderSounds(query = "") {
 
   const filtered = sounds.filter(sound =>
     (sound.name + " " + sound.desc + " " + sound.file)
-      .toLowerCase()
-      .includes(query.toLowerCase())
+      .toLowerCase().includes(query.toLowerCase())
   );
 
   if (!filtered.length) {
-    list.innerHTML =
-      '<p class="empty">No sounds found. Try another search.</p>';
+    list.innerHTML = '<p class="empty">No sounds found. Try another search.</p>';
     return;
   }
-
-  filtered.forEach(sound => {
-    list.appendChild(createCard(sound));
-  });
+  filtered.forEach(sound => list.appendChild(createCard(sound)));
 }
 
 function showDetail(sound) {
   stopAudio();
-
   home.style.display = "none";
   aboutSection.style.display = "none";
   detail.style.display = "block";
@@ -575,8 +537,8 @@ function showDetail(sound) {
   const play = document.createElement("button");
   play.className = "play";
   play.textContent = "▶";
-  play.setAttribute("aria-label", "Play " + sound.name);
-  play.addEventListener("click", () => playSound(sound, play));
+  play.setAttribute("aria-label","Play " + sound.name);
+  play.addEventListener("click",() => playSound(sound,play));
 
   const heading = document.createElement("h2");
   heading.textContent = sound.name;
@@ -588,7 +550,7 @@ function showDetail(sound) {
   const duration = document.createElement("p");
   duration.className = "duration";
   duration.textContent = "Loading duration...";
-  duration.setAttribute("data-duration", sound.file);
+  duration.setAttribute("data-duration",sound.file);
 
   const download = document.createElement("a");
   download.className = "download";
@@ -596,102 +558,86 @@ function showDetail(sound) {
   download.download = "";
   download.textContent = "⬇ Download Sound";
 
-  panel.append(play, heading, description, duration, download);
-
+  panel.append(play,heading,description,duration,download);
   relatedList.replaceChildren();
 
-  sounds
-    .filter(item => item.file !== sound.file)
+  sounds.filter(item => item.file !== sound.file)
     .slice(0,4)
     .forEach(item => relatedList.appendChild(createCard(item)));
 
-  history.replaceState(null, "", "#sound");
+  history.replaceState(null,"","#sound");
   window.scrollTo({top:0,behavior:"smooth"});
-
   durationText(sound);
 }
 
 function showHome() {
   stopAudio();
-
   detail.style.display = "none";
   aboutSection.style.display = "none";
   home.style.display = "block";
-
-  history.replaceState(null, "", location.pathname);
+  history.replaceState(null,"",location.pathname);
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function showAbout() {
   stopAudio();
-
   home.style.display = "none";
   detail.style.display = "none";
   aboutSection.style.display = "block";
-
-  history.replaceState(null, "", "#about");
+  history.replaceState(null,"","#about");
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function closeMenu() {
   menu.classList.remove("open");
-  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-expanded","false");
 }
 
-document.getElementById("back-button")
-  .addEventListener("click", showHome);
+document.getElementById("back-button").addEventListener("click",showHome);
+document.getElementById("about-back-button").addEventListener("click",showHome);
 
-document.getElementById("about-back-button")
-  .addEventListener("click", showHome);
-
-document.getElementById("logo-home").addEventListener("click", event => {
+document.getElementById("logo-home").addEventListener("click",event => {
   event.preventDefault();
   closeMenu();
   showHome();
 });
 
-menuButton.addEventListener("click", () => {
+menuButton.addEventListener("click",() => {
   const isOpen = menu.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.setAttribute("aria-expanded",String(isOpen));
 });
 
-document.getElementById("home-link").addEventListener("click", event => {
+document.getElementById("home-link").addEventListener("click",event => {
   event.preventDefault();
   closeMenu();
   showHome();
 });
 
-document.getElementById("browse-link").addEventListener("click", event => {
+document.getElementById("browse-link").addEventListener("click",event => {
   event.preventDefault();
   closeMenu();
   showHome();
-
   search.focus();
   search.scrollIntoView({behavior:"smooth",block:"center"});
 });
 
-document.getElementById("about-link").addEventListener("click", event => {
+document.getElementById("about-link").addEventListener("click",event => {
   event.preventDefault();
   closeMenu();
   showAbout();
 });
 
-document.getElementById("contact-link").addEventListener("click", event => {
+document.getElementById("contact-link").addEventListener("click",event => {
   event.preventDefault();
   closeMenu();
-
   window.location.href =
     "mailto:urvijay03@gmail.com?subject=TotalSFX%20Contact";
 });
 
-search.addEventListener("input", () => {
-  renderSounds(search.value);
-});
-
+search.addEventListener("input",() => renderSounds(search.value));
 document.getElementById("year").textContent = new Date().getFullYear();
 
 renderSounds();
 </script>
-
 </body>
 </html>
