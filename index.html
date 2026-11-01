@@ -153,7 +153,10 @@ h1 {
   background:linear-gradient(100deg,var(--orange),var(--gold));
 }
 .download:hover { filter:brightness(1.08); }
-#detail,#about-section { display:none; }
+
+/* Detail, About and Privacy Policy are hidden initially */
+#detail,#about-section,#privacy-section { display:none; }
+
 .back {
   border:1px solid var(--border);
   border-radius:12px;
@@ -181,21 +184,27 @@ h1 {
   margin:24px auto 0;
 }
 #related-title { margin-top:32px; }
-#about-section {
+
+#about-section,
+#privacy-section {
   background:linear-gradient(145deg,#1a1a21,#121217);
   border:1px solid var(--border);
   border-radius:24px;
   padding:24px;
 }
-#about-section h2 {
+#about-section h2,
+#privacy-section h2 {
   color:var(--gold);
   margin-top:26px;
 }
-#about-section p,#about-section li {
+#about-section p,
+#about-section li,
+#privacy-section p {
   color:var(--muted);
   line-height:1.7;
 }
-#about-section a {
+#about-section a,
+#privacy-section a {
   color:var(--gold);
   overflow-wrap:anywhere;
 }
@@ -204,6 +213,12 @@ footer {
   color:var(--muted);
   padding:25px;
 }
+footer a {
+  color:var(--gold);
+  text-decoration:none;
+}
+footer a:hover { text-decoration:underline; }
+
 .empty {
   color:var(--muted);
   grid-column:1/-1;
@@ -242,7 +257,7 @@ footer {
     margin-top:15px;
   }
   h1 { font-size:24px; }
-  #about-section { padding:18px; }
+  #about-section,#privacy-section { padding:18px; }
 }
 </style>
 </head>
@@ -253,8 +268,10 @@ footer {
     <img src="file_00000000e4748211863d23cbe1a952b5.png"
          alt="TotalSFX Logo" style="height:45px;width:auto;">
   </a>
+
   <button class="menu-button" id="menu-button"
           aria-label="Open menu" aria-expanded="false">☰</button>
+
   <nav id="menu">
     <a href="#" id="home-link">Home</a>
     <a href="#browse" id="browse-link">Browse Sounds</a>
@@ -279,7 +296,7 @@ footer {
     <div id="related-list"></div>
   </section>
 
-<section id="about-section">
+  <section id="about-section">
     <button class="back" id="about-back-button">← Back to sounds</button>
     <h1>About TotalSFX</h1>
     <p>Welcome to TotalSFX! Find the sounds you need for your videos, memes, and everyday fun.</p>
@@ -293,12 +310,37 @@ footer {
     <h2>Get in Touch</h2>
     <p>Got a question or suggestion? We'd love to hear from you.</p>
     <p>Email: <a href="mailto:urvijay03@gmail.com">urvijay03@gmail.com</a></p>
-</section>
+  </section>
 
-  
+  <!-- NEW: Privacy Policy -->
+  <section id="privacy-section">
+    <button class="back" id="privacy-back-button">← Back to sounds</button>
+    <h1>Privacy Policy — TotalSFX</h1>
+
+    <h2>1. Privacy</h2>
+    <p>You can listen to and download sounds on TotalSFX without creating an account or logging in. We do not directly ask visitors to provide personal information. However, our hosting provider may process certain technical information to operate and protect the website.</p>
+
+    <h2>2. Cookies, Analytics and Advertising</h2>
+    <p>Analytics or advertising services may be introduced on TotalSFX in the future. If these services are introduced, this Privacy Policy will be updated as necessary.</p>
+
+    <h2>3. Copyright Complaints</h2>
+    <p>If you believe that any content on TotalSFX infringes your copyright, please email us with the link to the content and details of your complaint.</p>
+    <p>Email: <a href="mailto:urvijay03@gmail.com">urvijay03@gmail.com</a></p>
+    <p>We will review your complaint and take appropriate action where necessary.</p>
+
+    <h2>4. Data Requests and Contact</h2>
+    <p>For privacy-related questions or data requests, please contact us at:</p>
+    <p>Email: <a href="mailto:urvijay03@gmail.com">urvijay03@gmail.com</a></p>
+
+    <h2>5. Enjoy TotalSFX</h2>
+    <p>Discover, listen to, and download your favorite sound effects. Enjoy TotalSFX!</p>
+  </section>
 </main>
 
-<footer>© <span id="year"></span> TotalSFX</footer>
+<footer>
+  © <span id="year"></span> TotalSFX |
+  <a href="#" id="privacy-link">Privacy Policy</a>
+</footer>
 
 <script>
 // Keep the existing sounds and add the new ones.
@@ -410,6 +452,7 @@ const relatedList = document.getElementById("related-list");
 const home = document.getElementById("home");
 const detail = document.getElementById("detail");
 const aboutSection = document.getElementById("about-section");
+const privacySection = document.getElementById("privacy-section");
 const search = document.getElementById("search");
 const menu = document.getElementById("menu");
 const menuButton = document.getElementById("menu-button");
@@ -534,6 +577,7 @@ function showDetail(sound) {
   stopAudio();
   home.style.display = "none";
   aboutSection.style.display = "none";
+  privacySection.style.display = "none";
   detail.style.display = "block";
 
   const panel = document.getElementById("detail-content");
@@ -579,6 +623,7 @@ function showHome() {
   stopAudio();
   detail.style.display = "none";
   aboutSection.style.display = "none";
+  privacySection.style.display = "none";
   home.style.display = "block";
   history.replaceState(null,"",location.pathname);
   window.scrollTo({top:0,behavior:"smooth"});
@@ -588,8 +633,20 @@ function showAbout() {
   stopAudio();
   home.style.display = "none";
   detail.style.display = "none";
+  privacySection.style.display = "none";
   aboutSection.style.display = "block";
   history.replaceState(null,"","#about");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showPrivacy() {
+  stopAudio();
+  home.style.display = "none";
+  detail.style.display = "none";
+  aboutSection.style.display = "none";
+  privacySection.style.display = "block";
+  closeMenu();
+  history.replaceState(null,"","#privacy");
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
@@ -600,6 +657,12 @@ function closeMenu() {
 
 document.getElementById("back-button").addEventListener("click",showHome);
 document.getElementById("about-back-button").addEventListener("click",showHome);
+document.getElementById("privacy-back-button").addEventListener("click",showHome);
+
+document.getElementById("privacy-link").addEventListener("click",event => {
+  event.preventDefault();
+  showPrivacy();
+});
 
 document.getElementById("logo-home").addEventListener("click",event => {
   event.preventDefault();
