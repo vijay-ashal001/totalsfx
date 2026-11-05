@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://totalsfx.pages.dev/sitemap.xml
